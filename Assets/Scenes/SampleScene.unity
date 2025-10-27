@@ -340,6 +340,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &635694826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 635694828}
+  - component: {fileID: 635694827}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &635694827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635694826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cecf18f3a5beb9b41b2d37e25f6a075d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathVocals: []
+--- !u!4 &635694828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635694826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0023379, y: 3.4094949, z: 0.009105338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956599349
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,9 +414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80018c35920eba4d93d8ad7aa6c8250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 6778408259537654112, guid: 111301f137e6c474dab668691aa0cde9, type: 3}
-  numberOfTiles: 7
-  tileScale: 1
+  entrancePrefab: {fileID: 6778408259537654112, guid: 111301f137e6c474dab668691aa0cde9, type: 3}
+  tilePrefabs:
+  - {fileID: 6778408259537654112, guid: 111301f137e6c474dab668691aa0cde9, type: 3}
+  numberOfTiles: 15
+  tileScale: 5
   usedPositions: []
 --- !u!4 &1956599351
 Transform:
@@ -395,3 +442,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1956599351}
+  - {fileID: 635694828}
