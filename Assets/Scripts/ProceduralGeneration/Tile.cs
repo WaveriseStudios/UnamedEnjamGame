@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public GameObject topExit;
-    public GameObject bottomExit;
-    public GameObject leftExit;
-    public GameObject rightExit;
+    [Header("Tile Exits")]
+    public bool exitTop;
+    public bool exitBottom;
+    public bool exitLeft;
+    public bool exitRight;
 }

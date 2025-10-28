@@ -3,23 +3,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioClip[] deathVocals; 
+    public static GameManager instance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioClip[] echos;
 
     public void AddDeathVocal(AudioClip vocal)
     {
-        deathVocals.Append(vocal);
+        echos.Append(vocal);
         return;
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 }
