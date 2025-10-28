@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 1618670495137106528}
   - component: {fileID: 7835385296813680207}
   - component: {fileID: 5607448736694035898}
+  - component: {fileID: 5776591968808062556}
   m_Layer: 0
   m_Name: TestTile
   m_TagString: Untagged
@@ -793,6 +794,22 @@ MonoBehaviour:
   - {fileID: 2380196637226253262, guid: eb3b0cb06a102df4db97192a25d95833, type: 3}
   availableEnemies: []
   enemyPercentage: 33
+--- !u!114 &5776591968808062556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778408259537654112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0ea4db245eae94aaa4d764d2dd2fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topExit: {fileID: 1489945769278440488}
+  bottomExit: {fileID: 1447003234777131229}
+  leftExit: {fileID: 2887737155023506372}
+  rightExit: {fileID: 5771165713544285502}
 --- !u!1 &7856854255118617789
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject topExit;
+    public GameObject bottomExit;
+    public GameObject leftExit;
+    public GameObject rightExit;
 }
