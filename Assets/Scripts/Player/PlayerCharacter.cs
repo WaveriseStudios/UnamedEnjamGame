@@ -7,6 +7,10 @@ public class PlayerCharacter : MonoBehaviour
 {
     [Header("Components")]
     public Rigidbody2D rb;
+    public Animator animator;
+
+    [SerializeField]
+    public Cooldown cooldown;
 
     [Header("Inputs")]
     [Space]
@@ -26,7 +30,8 @@ public class PlayerCharacter : MonoBehaviour
     private GameObject itemCloseToPlayer;
 
     [Header("Echos")]
-    private AudioClip deathEcho;
+    public float echoCooldown = 40f;
+    public AudioClip deathEcho;
     public GameObject echoObject;
 
     private void Start()
@@ -40,6 +45,8 @@ public class PlayerCharacter : MonoBehaviour
     void Update()
     {
         moveDirection = playerMovementControls.ReadValue<Vector2>();
+        animator.SetFloat("X", moveDirection.x);
+        animator.SetFloat("Y", moveDirection.y);
     }
 
     private void FixedUpdate()
@@ -47,9 +54,15 @@ public class PlayerCharacter : MonoBehaviour
         rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
-    public void RecordEcho()
+    public void RecordEcho(InputAction.CallbackContext context)
     {
+        if (cooldown.IsCoolingDown) return;
+
         GameObject echo = Instantiate<GameObject>(echoObject, transform.position, transform.rotation);
+        echo.GetComponent<EchoListener>().audioSource = echo.transform.GetChild(0).GetComponent<AudioSource>();
+        echo.GetComponent<EchoListener>().CreateEcho(deathEcho);
+
+        cooldown.StartCooldown(echoCooldown);
     }
 
 
@@ -92,16 +105,6 @@ public class PlayerCharacter : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
     // PlayerActions
 
     private void OnEnable()
@@ -110,6 +113,7 @@ public class PlayerCharacter : MonoBehaviour
         playerEchoControl.Enable();
         playerActionControl.Enable();
         playerActionControl.performed += Action;
+        playerEchoControl.performed += RecordEcho;
     }
 
     private void OnDisable()

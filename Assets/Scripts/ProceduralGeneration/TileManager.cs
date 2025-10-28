@@ -1,104 +1,104 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class TileCodeMapping
+{
+    public string code;       // e.g., "TD", "L", "."
+    public GameObject prefab; // prefab to spawn for this code
+}
+
+[System.Serializable]
+public class TileRow
+{
+    public List<string> row = new List<string>();
+}
+
 public class TileManager : MonoBehaviour
 {
     [Header("Tile Settings")]
-    public GameObject entrancePrefab;
-    public GameObject[] tilePrefabs; // Assign various tile prefabs
-    public int numberOfTiles = 7;
-    public int tileScale = 5;
+    public TextAsset levelFile; // assign your txt file here
+    public float tileScale = 5f; // spacing between tiles
+    public List<TileRow> gridRows = new List<TileRow>();
+    public TileCodeMapping[] tileMappings;
 
-    public List<Vector3> usedPositions = new List<Vector3>();
+    private Dictionary<string, GameObject> codeToPrefab;
+
+    private void Awake()
+    {
+        BuildDictionary();
+        GenerateFromText();
+    }
+
+    private void BuildDictionary()
+    {
+        codeToPrefab = new Dictionary<string, GameObject>();
+        foreach (var mapping in tileMappings)
+        {
+            if (!codeToPrefab.ContainsKey(mapping.code))
+                codeToPrefab.Add(mapping.code, mapping.prefab);
+        }
+    }
+
+    private void GenerateFromText()
+    {
+        if (levelFile == null)
+        {
+            Debug.LogError("No level text file assigned!");
+            return;
+        }
+
+        string[] lines = levelFile.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        int height = lines.Length;
+        int width = 0;
+        if (height > 0) width = lines[0].Split(' ').Length;
+
+        // center origin
+        Vector2Int center = new Vector2Int(width / 2, height / 2);
+
+        for (int y = 0; y < height; y++)
+        {
+            string[] codes = lines[y].Trim().Split(' ');
+
+            for (int x = 0; x < codes.Length; x++)
+            {
+                string code = codes[x].Trim();
+                if (code == "." || !codeToPrefab.ContainsKey(code))
+                    continue; // skip empty
+
+                GameObject prefab = codeToPrefab[code];
+                Vector3 pos = new Vector3((x - center.x) * tileScale, (height - 1 - y - center.y) * tileScale, 0f);
+
+                Instantiate(prefab, pos, Quaternion.identity);
+            }
+        }
+    }
+
+    public void PopulateGridFromText(TextAsset file)
+    {
+        gridRows.Clear();
+
+        string[] lines = file.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (string line in lines)
+        {
+            string trimmedLine = line.Trim();
+            if (string.IsNullOrEmpty(trimmedLine))
+                continue;
+
+            string[] codes = trimmedLine.Split(' ');
+            TileRow row = new TileRow();
+            row.row.AddRange(codes);
+
+            gridRows.Add(row);
+        }
+
+        Debug.Log("Grid populated from text. Rows: " + gridRows.Count);
+    }
 
     private void Start()
     {
-        CreateDungeon();
-    }
-
-    public void CreateDungeon()
-    {
-        Vector3 currentPosition = Vector3.zero;
-        usedPositions.Add(currentPosition);
-
-        // Create entrance
-        GameObject entrance = Instantiate(entrancePrefab, currentPosition, Quaternion.identity);
-        Tile currentTile = entrance.GetComponent<Tile>();
-
-        for (int i = 0; i < numberOfTiles; i++)
-        {
-            // Get available spawn directions from current tile
-            List<Vector3> availableDirs = GetAvailableDirections(currentTile, currentPosition);
-
-            if (availableDirs.Count == 0)
-            {
-                Debug.Log("No available exits from current tile, stopping generation.");
-                break;
-            }
-
-            // Pick a random direction from available ones
-            Vector3 chosenDir = availableDirs[Random.Range(0, availableDirs.Count)];
-            Vector3 newPosition = currentPosition + chosenDir * tileScale;
-
-            // Avoid overlapping tiles
-            int safety = 0;
-            while (usedPositions.Contains(newPosition) && safety < 10)
-            {
-                chosenDir = availableDirs[Random.Range(0, availableDirs.Count)];
-                newPosition = currentPosition + chosenDir * tileScale;
-                safety++;
-            }
-
-            // Pick a random tile that fits (must have the matching opposite exit)
-            GameObject prefab = GetMatchingTile(chosenDir);
-            if (prefab == null)
-            {
-                Debug.LogWarning("No matching tile found for direction " + chosenDir);
-                break;
-            }
-
-            // Spawn tile
-            GameObject newTileObj = Instantiate(prefab, newPosition, Quaternion.identity);
-            Tile newTile = newTileObj.GetComponent<Tile>();
-
-            usedPositions.Add(newPosition);
-            currentPosition = newPosition;
-            currentTile = newTile;
-        }
-    }
-
-    private List<Vector3> GetAvailableDirections(Tile tile, Vector3 currentPos)
-    {
-        List<Vector3> dirs = new List<Vector3>();
-
-        if (tile.exitRight)
-            dirs.Add(Vector3.right);
-        if (tile.exitLeft)
-            dirs.Add(Vector3.left);
-        if (tile.exitTop)
-            dirs.Add(Vector3.up);
-        if (tile.exitBottom)
-            dirs.Add(Vector3.down);
-
-        return dirs;
-    }
-
-    private GameObject GetMatchingTile(Vector3 direction)
-    {
-        List<GameObject> candidates = new List<GameObject>();
-
-        foreach (var prefab in tilePrefabs)
-        {
-            Tile t = prefab.GetComponent<Tile>();
-            if (t == null) continue;
-
-            if (direction == Vector3.right && t.exitLeft) candidates.Add(prefab);
-            if (direction == Vector3.left && t.exitRight) candidates.Add(prefab);
-            if (direction == Vector3.up && t.exitBottom) candidates.Add(prefab);
-            if (direction == Vector3.down && t.exitTop) candidates.Add(prefab);
-        }
-
-        if (candidates.Count == 0) return null;
-        return candidates[Random.Range(0, candidates.Count)];
+        PopulateGridFromText(levelFile);
     }
 }

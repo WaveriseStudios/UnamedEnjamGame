@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6557585764166742439}
   - component: {fileID: 425515603816902095}
+  - component: {fileID: 2231717570431332120}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1559547727
   m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 5639609239629107364, guid: 1fb1eb986c881754a8616497b760e2a2, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 2538799482436311692, guid: 23ccdf760fab3a74cb761858bb35b5a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,6 +88,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2231717570431332120
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903005106831240432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11b4b617595af4e409777ec7143a4d63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4142067115134244505
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,8 +120,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4744994510601919679}
   m_Layer: 0
-  m_Name: TorcheHolder
-  m_TagString: Untagged
+  m_Name: ItemHolder
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 4142067115134244505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.04, z: 0}
+  m_LocalPosition: {x: -0.111, y: -0.171, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,6 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3502820881813743461}
   - component: {fileID: 3787298629813824047}
+  - component: {fileID: 8817736191002065814}
   - component: {fileID: 7205774720741564676}
   - component: {fileID: 7148825029888066999}
   m_Layer: 0
@@ -167,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7205774720741564676}
+  animator: {fileID: 2231717570431332120}
   playerMovementControls:
     m_Name: Player Movement Controls
     m_Type: 0
@@ -191,9 +216,25 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Player Movement Controls
       m_Flags: 8
+    - m_Name: up
+      m_Id: 4f269069-0b84-4ce8-872d-f312cb07ae5a
+      m_Path: <Gamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Movement Controls
+      m_Flags: 8
     - m_Name: down
       m_Id: 6a28625b-5a12-4382-a5f9-fe818f893206
       m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Movement Controls
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 7e6fcbfe-571a-406e-a5a2-1971013a567e
+      m_Path: <Gamepad>/leftStick/down
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -207,9 +248,25 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Player Movement Controls
       m_Flags: 8
+    - m_Name: left
+      m_Id: 71a158e6-623d-4f02-81da-23487ef9d7b8
+      m_Path: <Gamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Movement Controls
+      m_Flags: 8
     - m_Name: right
       m_Id: 8646774b-5df4-4d09-ad66-e34c960b0b58
       m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Movement Controls
+      m_Flags: 8
+    - m_Name: right
+      m_Id: e4a0ee83-26bb-49a3-956c-86b53f4b3378
+      m_Path: <Gamepad>/leftStick/right
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -232,6 +289,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Player Echo Control
       m_Flags: 0
+    - m_Name: 
+      m_Id: a228c003-3bc6-485b-afd0-e57170e509a6
+      m_Path: <Gamepad>/rightShoulder
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Echo Control
+      m_Flags: 0
     m_Flags: 0
   playerActionControl:
     m_Name: Player Action Control
@@ -249,10 +314,36 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Player Action Control
       m_Flags: 0
+    - m_Name: 
+      m_Id: 3246276a-c54c-4806-b97c-36355bf8e51d
+      m_Path: <Gamepad>/buttonEast
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Action Control
+      m_Flags: 0
     m_Flags: 0
   moveSpeed: 4
   torche: {fileID: 11400000, guid: 4b7e29649600f784e8dd3e9a919e22bd, type: 2}
-  objectHolder: {fileID: 0}
+  objectHolder: {fileID: 4744994510601919679}
+  echoCooldown: 40
+  deathEcho: {fileID: 8300000, guid: 8973eca0dd3a30b4884702ea370f02ca, type: 3}
+  echoObject: {fileID: 2502804578489344396, guid: 9e7ab6a8560e8c543846904654fc3b7b, type: 3}
+--- !u!114 &8817736191002065814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857580728661518096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb3b488e509f9a45af229f2e06dcffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCollider: {fileID: 7148825029888066999}
+  playerCharacter: {fileID: 3787298629813824047}
+  health: 3
 --- !u!50 &7205774720741564676
 Rigidbody2D:
   serializedVersion: 5
@@ -279,7 +370,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &7148825029888066999
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

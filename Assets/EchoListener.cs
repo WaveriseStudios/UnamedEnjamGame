@@ -6,6 +6,11 @@ public class EchoListener : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
 
+    private void Start()
+    {
+        audioSource = transform.GetChild(0).GetComponent<AudioSource>();
+    }
+
 
     public void CreateEcho(AudioClip clip)
     {
@@ -17,7 +22,9 @@ public class EchoListener : MonoBehaviour
     {
         if (collision != null)
         {
-            audioSource.PlayOneShot(audioClip);
+            if (audioSource.isPlaying) return;
+
+            audioSource.Play();
         }
     }
 }

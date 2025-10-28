@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08f091da9ae0724ebd351828bedbc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 3195777151512476063}
+  audioClip: {fileID: 8300000, guid: 8973eca0dd3a30b4884702ea370f02ca, type: 3}
 --- !u!58 &4231327910791084493
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -156,9 +158,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1126951829
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
   m_Color: {r: 1, g: 0, b: 0.3936205, a: 1}
   m_FlipX: 0
