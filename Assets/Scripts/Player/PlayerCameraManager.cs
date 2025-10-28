@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class PlayerCameraManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Camera Settings")]
+    public Transform playerCharacter;
+    public float cameraFollowSpeed = 3f;
+    public float distanceToPlayer = 10f;
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        Vector3 newPos = new Vector3(playerCharacter.position.x, playerCharacter.position.y, -distanceToPlayer);
+        transform.position = Vector3.Slerp(transform.position, newPos, cameraFollowSpeed * Time.deltaTime);
     }
 }
