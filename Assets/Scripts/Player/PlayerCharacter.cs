@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerCharacter : MonoBehaviour
     public InputAction playerMovementControls;
     public InputAction playerEchoControl;
     public InputAction playerActionControl;
+    public InputAction playerAttackControl;
 
     [Header("Movement")]
     public float moveSpeed = 4f;
@@ -58,10 +60,25 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (cooldown.IsCoolingDown) return;
 
+        string device = Microphone.devices[0];
+        int sampleRate = 44100;
+        int lengthSec = 10;
+
+        deathEcho = Microphone.Start(device, false, lengthSec, sampleRate);
+    }
+
+    public void StopEchoRecord(InputAction.CallbackContext context)
+    {
+        if (cooldown.IsCoolingDown) return;
+
+        Microphone.End(null);
+
         GameObject echo = Instantiate<GameObject>(echoObject, transform.position, transform.rotation);
         echo.GetComponent<EchoListener>().audioSource = echo.transform.GetChild(0).GetComponent<AudioSource>();
         echo.GetComponent<EchoListener>().CreateEcho(deathEcho);
+        GameManager.instance.AddDeathVocal(echo.GetComponent<EchoListener>().audioClip);
 
+        deathEcho = null;
         cooldown.StartCooldown(echoCooldown);
     }
 
@@ -82,6 +99,11 @@ public class PlayerCharacter : MonoBehaviour
                 TakeItem();
             }
         }
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        animator.SetBool("kick", true);
     }
 
     public void DropItem()
@@ -112,8 +134,11 @@ public class PlayerCharacter : MonoBehaviour
         playerMovementControls.Enable();
         playerEchoControl.Enable();
         playerActionControl.Enable();
+        playerAttackControl.Enable();
         playerActionControl.performed += Action;
         playerEchoControl.performed += RecordEcho;
+        playerEchoControl.canceled += StopEchoRecord;
+        playerAttackControl.performed += Attack;
     }
 
     private void OnDisable()
@@ -121,6 +146,7 @@ public class PlayerCharacter : MonoBehaviour
         playerMovementControls.Disable();
         playerEchoControl.Disable();
         playerActionControl.Disable();
+        playerAttackControl.Disable();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
