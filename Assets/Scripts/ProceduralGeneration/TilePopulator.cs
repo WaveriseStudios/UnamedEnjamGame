@@ -41,7 +41,7 @@ public class TilePopulator : MonoBehaviour
         // Spawn new ones
         foreach (Transform spawn in availableSpawns)
         {
-            int randomEnemySpawnPercentage = Random.Range(0, 100);
+            //int randomEnemySpawnPercentage = Random.Range(0, 100);
             int randomIndex = Random.Range(0, availableObjects.Length);
             GameObject prefab = availableObjects[randomIndex];
             GameObject spawnedItem = Instantiate(prefab, spawn.position, spawn.rotation, spawn);
