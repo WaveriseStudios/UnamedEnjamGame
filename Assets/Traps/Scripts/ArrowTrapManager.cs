@@ -23,15 +23,24 @@ public class ArrowTrapManager : MonoBehaviour
     {
         if (isCooldown || !other.CompareTag("Player")) return;
         StartCoroutine(ShootArrow());
+        playerTransform = other.transform;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        StopCoroutine(ShootArrow());
     }
 
     private IEnumerator ShootArrow()
     {
         isCooldown = true;
 
-        Vector2 dir = (playerTransform.position - trapTransform.position).normalized;
-        GameObject arrow = Instantiate(arrowPrefab, trapTransform.position, Quaternion.identity);
-        arrow.GetComponent<ArrowProjectile>().SetDirection(dir);
+        if(playerTransform)
+        {
+            Vector2 dir = (playerTransform.position - trapTransform.position).normalized;
+            GameObject arrow = Instantiate(arrowPrefab, trapTransform.position, Quaternion.identity);
+            arrow.GetComponent<ArrowProjectile>().SetDirection(dir);
+        }
 
         yield return new WaitForSeconds(cooldown);
         isCooldown = false;
