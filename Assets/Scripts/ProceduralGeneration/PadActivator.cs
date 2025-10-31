@@ -11,7 +11,9 @@ public class PadActivator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             activated = true;
-            GetComponent<SpriteRenderer>().color = Color.green; // feedback
+            GetComponent<Animator>().SetBool("play", true);
+            transform.Find("LightNormal").gameObject.SetActive(false);
+            transform.Find("LightActive").gameObject.SetActive(true);
             tileManager.PadPressed();
         }
     }

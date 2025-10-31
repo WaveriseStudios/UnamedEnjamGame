@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     public PlayerCharacter character;
+    public GameObject deadCanvas;
 
-    public Slider slider;
+    public Slider echoSlider;
+    public Slider healthSlider;
     public Image itemImg;
 
     public GameObject smallMap;
@@ -20,25 +22,35 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(character.isRecording)
+        if(character.GetComponent<PlayerHealth>().health <= 0)
         {
-            slider.value = (10-character.recordingTime);
+            deadCanvas.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+
+
+
+        healthSlider.value = character.GetComponent<PlayerHealth>().health;
+
+        if (character.isRecording)
+        {
+            echoSlider.value = (10 - character.recordingTime);
         }
         else
         {
-            slider.value += Time.deltaTime;
+            echoSlider.value += Time.deltaTime;
         }
 
-        if(character.cooldown.IsCoolingDown)
+        if (character.cooldown.IsCoolingDown)
         {
-            slider.interactable = false;
+            echoSlider.interactable = false;
         }
         else
         {
-            slider.interactable = true;
+            echoSlider.interactable = true;
         }
 
-        if(character.itemObj)
+        if (character.itemObj)
         {
             itemImg.gameObject.SetActive(true);
         }
@@ -47,7 +59,7 @@ public class UiManager : MonoBehaviour
             itemImg.gameObject.SetActive(false);
         }
 
-        if(character.wantMap)
+        if (character.wantMap)
         {
             smallMap.SetActive(false);
             largeMap.SetActive(true);
@@ -57,5 +69,6 @@ public class UiManager : MonoBehaviour
             smallMap.SetActive(true);
             largeMap.SetActive(false);
         }
+
     }
 }

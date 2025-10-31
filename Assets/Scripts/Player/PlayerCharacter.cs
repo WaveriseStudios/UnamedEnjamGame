@@ -44,30 +44,58 @@ public class PlayerCharacter : MonoBehaviour
     public bool isRecording = false;
     public float recordingTime = 0f;
 
+    [Header("KnockBack")]
+    public float knockForce = 10f;
+
+    public float knockDuration = 0.15f;
+    private bool isKnocked = false;
+    private float knockTimer = 0f;
+
     private void Start()
     {
         itemObj = Instantiate<GameObject>(torche.itemPrefab);
         itemObj.GetComponent<CircleCollider2D>().enabled = false;
         itemObj.transform.SetParent(objectHolder, false);
-        nameText.text = GameManager.instance.currentPlayerName;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isRecording)
+
+        nameText.text = GameManager.instance.currentPlayerName;
+
+        if (isRecording)
         {
             recordingTime += Time.deltaTime;
         }
 
-        if(!wantMap)
+        if (!wantMap && !isKnocked)
         {
             moveDirection = playerMovementControls.ReadValue<Vector2>();
+        }
+        else if (isKnocked)
+        {
+            knockTimer -= Time.deltaTime;
+            if (knockTimer <= 0)
+            {
+                isKnocked = false;
+            }
         }
         else
         {
             moveDirection = Vector2.zero;
         }
+        if (!isKnocked)
+        {
+            rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        }
+        else
+        {
+            moveDirection = Vector2.zero;
+        }
+
+
+
         if (itemObj)
         {
             currentMoveSpeed = moveSpeed;
@@ -83,6 +111,13 @@ public class PlayerCharacter : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveDirection.x * currentMoveSpeed, moveDirection.y * currentMoveSpeed);
+    }
+
+    public void Reset()
+    {
+        itemObj = Instantiate<GameObject>(torche.itemPrefab);
+        itemObj.GetComponent<CircleCollider2D>().enabled = false;
+        itemObj.transform.SetParent(objectHolder, false);
     }
 
     public void RecordEcho(InputAction.CallbackContext context)
@@ -169,11 +204,22 @@ public class PlayerCharacter : MonoBehaviour
         wantMap=false;
     }
 
+    private void knockBack(Vector3 source)
+    {
+        Debug.Log("KnockBack");
+        Vector2 direction = ((Vector2)(transform.position - source)).normalized;
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(direction * knockForce, ForceMode2D.Impulse);
+        Debug.Log(direction * knockForce);
+        isKnocked = true;
+        knockTimer = knockDuration;
+    }
+
 
 
     // PlayerActions
 
-    private void OnEnable()
+    public void OnEnable()
     {
         playerMovementControls.Enable();
         playerEchoControl.Enable();
@@ -191,7 +237,7 @@ public class PlayerCharacter : MonoBehaviour
         playerMapControl.canceled += CloseMap;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         playerMovementControls.Disable();
         playerEchoControl.Disable();
@@ -207,11 +253,25 @@ public class PlayerCharacter : MonoBehaviour
             closeToItem = true;
             itemCloseToPlayer = collision.gameObject;
         }
+
+
+        if (collision.gameObject.tag == "dealDamage")
+        {
+            knockBack(collision.transform.position);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         closeToItem = false;
         itemCloseToPlayer = null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "dealDamage")
+        {
+            knockBack(collision.transform.position);
+        }
     }
 }

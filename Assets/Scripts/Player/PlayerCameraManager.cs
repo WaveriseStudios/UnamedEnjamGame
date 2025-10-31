@@ -20,24 +20,34 @@ public class PlayerCameraManager : MonoBehaviour
             return;
         }
 
-        // Initialize at player's grid position
-        targetPosition = GetGridCenter(player.position);
-        transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        player = FindFirstObjectByType<PlayerCharacter>().transform;
+
+        if(player)
+        {
+            // Initialize at player's grid position
+            targetPosition = GetGridCenter(player.position);
+            transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        }
     }
 
     private void Update()
     {
-        Vector3 playerGridCenter = GetGridCenter(player.position);
+        player = FindFirstObjectByType<PlayerCharacter>().transform;
 
-        // If player moves into a new grid cell, update camera target
-        if (playerGridCenter != targetPosition)
-            targetPosition = playerGridCenter;
+        if(player)
+        {
+            Vector3 playerGridCenter = GetGridCenter(player.position);
 
-        // Smooth move camera towards target cell center
-        Vector3 newPos = Vector3.Lerp(transform.position,
-                                      new Vector3(targetPosition.x, targetPosition.y, transform.position.z),
-                                      Time.deltaTime * moveSpeed);
-        transform.position = newPos;
+            // If player moves into a new grid cell, update camera target
+            if (playerGridCenter != targetPosition)
+                targetPosition = playerGridCenter;
+
+            // Smooth move camera towards target cell center
+            Vector3 newPos = Vector3.Lerp(transform.position,
+                                          new Vector3(targetPosition.x, targetPosition.y, transform.position.z),
+                                          Time.deltaTime * moveSpeed);
+            transform.position = newPos;
+        }
     }
 
     // Rounds player position to nearest 20x20 cell center

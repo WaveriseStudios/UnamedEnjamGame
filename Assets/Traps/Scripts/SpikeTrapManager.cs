@@ -20,13 +20,14 @@ public class SpikeTrapManager : MonoBehaviour
     [SerializeField]
     private Sprite spikesDown;
 
-
+    private AudioSource audioSource;
     private bool isCooldown = false;
 
     private void Start()
     {
         DamageCollider.SetActive(false);
         spriteRenderer.sprite = spikesDown;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,6 +41,8 @@ public class SpikeTrapManager : MonoBehaviour
         isCooldown = true;
         spriteRenderer.sprite = spikesUp;
         DamageCollider.SetActive(true);
+
+        audioSource.Play();
 
         yield return new WaitForSeconds(activeDuration);
 

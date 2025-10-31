@@ -579,7 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6270745670322328250}
   - component: {fileID: 2069873891763489124}
-  - component: {fileID: -8625803969302271685}
+  - component: {fileID: -4933441892955365206}
   m_Layer: 0
   m_Name: Room 04
   m_TagString: Untagged
@@ -625,7 +625,7 @@ MonoBehaviour:
   exitBottom: 0
   exitLeft: 0
   exitRight: 0
---- !u!114 &-8625803969302271685
+--- !u!114 &-4933441892955365206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -637,10 +637,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b207a613b87cdd4f8a06ea592d6eaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
-  availableSpawns: []
-  availableObjects: []
-  availableEnemies: []
+  availableObjects:
+  - {fileID: 5945058219005747944, guid: cad8914cc78b2324bacf771a76d71c7a, type: 3}
+  - {fileID: 3220548164055823739, guid: 3d9929fa348464a4da0a196b1f914489, type: 3}
+  - {fileID: 2380196637226253262, guid: d332d54bf1dad5f4fac4d329e73799e3, type: 3}
+  availableEnemies:
+  - {fileID: 7857580728661518096, guid: ed1ed84805dd27a4bb7c9e43ca7b5370, type: 3}
+  areaSize: {x: 10, y: 10}
+  center: {fileID: 2589214437349903017}
+  populatePercentage: 75
   enemyPercentage: 33
 --- !u!1 &7011134323644497767
 GameObject:

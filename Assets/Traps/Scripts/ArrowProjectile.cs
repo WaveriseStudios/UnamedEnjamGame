@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ArrowProjectile : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class ArrowProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerHealth>().TakeDammage();
             Destroy(gameObject);
         }
     }

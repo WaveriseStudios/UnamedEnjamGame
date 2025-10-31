@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -6,10 +7,13 @@ public class EndTile : MonoBehaviour
     public GameObject[] particles;
     public int calledTimes = 0;
 
+    public GameObject door;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        door.SetActive(false);
+        calledTimes = 0;
     }
 
     // Update is called once per frame
@@ -20,12 +24,12 @@ public class EndTile : MonoBehaviour
 
     public void OnPadPressed()
     {
-        calledTimes++;
         particles[calledTimes].SetActive(true);
+        calledTimes++;
 
-        if (calledTimes == particles.Length - 1)
+        if (calledTimes == particles.Length)
         {
-
+            door.SetActive(true);
         }
     }
 }

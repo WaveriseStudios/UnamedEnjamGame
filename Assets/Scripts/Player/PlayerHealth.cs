@@ -6,9 +6,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("Components")]
     public Collider2D PlayerCollider;
     public PlayerCharacter playerCharacter;
+    public GameObject playerDeadPrefab;
 
     [Header("Settings")]
     public int health = 3;
+    public int maxHealth = 3;
 
     bool takeDamageCooldown = false;
 
@@ -20,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void TakeDammage()
+    public void TakeDammage()
     {
         health--;
         Debug.Log("1 damage taken");
@@ -30,9 +32,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        health = maxHealth;
+    }
+
     private void OnDead()
     {
+        GameObject deadbody = Instantiate<GameObject>(playerDeadPrefab, transform.position, Quaternion.identity);
         playerCharacter.DropItem();
+        deadbody.GetComponent<DeadPlayer>().nameText.text = GameManager.instance.currentPlayerName;
+        this.gameObject.SetActive(false);
+        this.transform.position = new Vector3(10, 10, 0);
+        playerCharacter.Reset();
         Debug.Log("Dead");
     }
 }

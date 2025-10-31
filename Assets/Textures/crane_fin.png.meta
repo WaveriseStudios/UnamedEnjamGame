@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 134f640d4bbbce341a62bad618939071
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3509644849887485868
+    second: crane_fin_0
+  - first:
+      213: -8592029519598856856
+    second: crane_fin_1
+  - first:
+      213: -4497740181374178862
+    second: crane_fin_2
+  - first:
+      213: -8852233822315267608
+    second: crane_fin_3
+  - first:
+      213: 3289862450632738535
+    second: crane_fin_4
+  - first:
+      213: -733894466351100294
+    second: crane_fin_5
+  - first:
+      213: -7860000411216562971
+    second: crane_fin_6
+  - first:
+      213: 8166994850137254856
+    second: crane_fin_7
+  - first:
+      213: -8344315020299865104
+    second: crane_fin_8
+  - first:
+      213: -8361743512780299270
+    second: crane_fin_9
+  - first:
+      213: -2902882468755631684
+    second: crane_fin_10
+  - first:
+      213: -2190614259207815612
+    second: crane_fin_11
+  - first:
+      213: -3791678119282588968
+    second: crane_fin_12
+  - first:
+      213: -6283474810690943903
+    second: crane_fin_13
+  - first:
+      213: 1771163870273945401
+    second: crane_fin_14
+  - first:
+      213: 7592865882473293210
+    second: crane_fin_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crane_fin_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4506daa9a9c3b4fc0800000000000000
+      internalID: -3509644849887485868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 865d3a8acaaf2c880800000000000000
+      internalID: -8592029519598856856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9e0359221d491c0800000000000000
+      internalID: -4497740181374178862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e933306d3c862580800000000000000
+      internalID: -8852233822315267608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_4
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e64cd9e770f7ad20800000000000000
+      internalID: 3289862450632738535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_5
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7e84860fdea0d5f0800000000000000
+      internalID: -733894466351100294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_6
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e43303254babe290800000000000000
+      internalID: -7860000411216562971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_7
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb20ecab8ef65170800000000000000
+      internalID: 8166994850137254856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_8
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 5
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f3f119f2b9033c80800000000000000
+      internalID: -8344315020299865104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_9
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 5
+        width: 44
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af3adc9d39e15fb80800000000000000
+      internalID: -8361743512780299270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_10
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 5
+        width: 44
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb19c1956c3e6b7d0800000000000000
+      internalID: -2902882468755631684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_11
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 5
+        width: 44
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44e330800ff5991e0800000000000000
+      internalID: -2190614259207815612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_12
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d24a85f6d0416bc0800000000000000
+      internalID: -3791678119282588968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_13
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 164c6a173fc9cc8a0800000000000000
+      internalID: -6283474810690943903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_14
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93f3faee720749810800000000000000
+      internalID: 1771163870273945401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crane_fin_15
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 5
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95e0089a474f5960800000000000000
+      internalID: 7592865882473293210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crane_fin_0: -3509644849887485868
+      crane_fin_1: -8592029519598856856
+      crane_fin_10: -2902882468755631684
+      crane_fin_11: -2190614259207815612
+      crane_fin_12: -3791678119282588968
+      crane_fin_13: -6283474810690943903
+      crane_fin_14: 1771163870273945401
+      crane_fin_15: 7592865882473293210
+      crane_fin_2: -4497740181374178862
+      crane_fin_3: -8852233822315267608
+      crane_fin_4: 3289862450632738535
+      crane_fin_5: -733894466351100294
+      crane_fin_6: -7860000411216562971
+      crane_fin_7: 8166994850137254856
+      crane_fin_8: -8344315020299865104
+      crane_fin_9: -8361743512780299270
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
